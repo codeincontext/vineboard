@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -12,8 +12,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -24,7 +24,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -49,8 +49,8 @@ table {
 
 /* >> The Magnificent CLEARFIX: Updated to prevent margin-collapsing on child elements << j.mp/bestclearfix */
 .clearfix:before, .clearfix:after {
-  content: "\0020"; display: block; height: 0; visibility: hidden;	
-} 
+  content: "\0020"; display: block; height: 0; visibility: hidden;
+}
 
 .clearfix:after { clear: both; }
 /* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
@@ -59,7 +59,7 @@ table {
 body {
 
 	background-color: rgb(46, 46, 46);
-	padding:10px; 
+	padding:10px;
 }
 
 video {
@@ -101,6 +101,35 @@ video {
 	font: 16px/24px Helvetica,Arial,sans-serif;
 	margin-bottom: 28px;
 	color: #999;
+}
+
+#no-audio {
+	font: bold 30px Helvetica,Arial,sans-serif;
+	color: #fff;
+	text-shadow: 0px 1px 10px rgba(0, 0, 0, 0.56);
+	text-align: center;
+	display:none;
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background:rgb(46,46,46);
+	background:rgba(46,46,46, 0.98);
+	z-index:99999999999;
+}
+
+#no-audio h2 {
+	font: bold 104px 'Yesteryear', cursive;
+	padding-top:150px;
+	padding-bottom:40px;
+}
+#no-audio h3 {
+	padding-bottom:30px;
+	font-size:23px;
+}
+#no-audio h4 {
+	font-size:22px;
 }
 
 .white {
@@ -377,10 +406,14 @@ video {
 	opacity: 1;
 }
 
+.active .key {
+	opacity:1;
+}
+
 .black video {
 }
 
-h2 {
+#wrapper h2 {
 	font: 16px/24px Helvetica,Arial,sans-serif;
 	color: rgb(177, 177, 177);
 	position: absolute;
@@ -439,6 +472,17 @@ box-shadow: 0px 0px 5px 0px #000;
 	text-shadow: 0px 1px 0px #fff;
 }
 
+.key {
+	font-family: Helvetica,Arial,sans-serif;
+	font-size:0.6em;
+	opacity:0.5;
+	text-transform: uppercase;
+	bottom:5px;
+	position: absolute;
+	left:10px;
+	color:#999;
+}
+
 #slash {
 	font: bold 26px/8px Helvetica,Arial,sans-serif;
 	padding: 11px 1px 9px 11px;
@@ -448,11 +492,12 @@ box-shadow: 0px 0px 5px 0px #000;
 footer {
 	position: fixed;
 	bottom: 0;
+	right:0;
 	border-top: 1px solid rgb(27, 27, 27);
-	width: 100%;
 	height: 30px;
 	left: 0;
 	text-align: center;
+	padding:15px 5px 5px;
 	padding-top: 20px;
 	background-color: rgb(29, 29, 29);
 }

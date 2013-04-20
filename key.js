@@ -5,7 +5,7 @@ var Key = (function() {
 
   function Key(element) {
     this.element = element;
-    this.video = this.element.childNodes[1];
+    this.video = this.element.childNodes[2];
 
     this.audioNode = audioContext.createMediaElementSource(this.video);
     this.gainNode = audioContext.createGainNode();
@@ -13,7 +13,7 @@ var Key = (function() {
     this.gainNode.connect(preEffectNode);
     this.gainNode.gain.value = 0.8;
   }
-  
+
   Key.prototype.play = function() {
     this.element.classList.add('active');
     this.video.play();
