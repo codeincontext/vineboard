@@ -10,7 +10,7 @@ var Key = (function() {
     this.audioNode = audioContext.createMediaElementSource(this.video);
     this.gainNode = audioContext.createGainNode();
     this.audioNode.connect(this.gainNode);
-    this.gainNode.connect(audioContext.destination);
+    this.gainNode.connect(preEffectNode);
     this.gainNode.gain.value = 0.8;
   }
   
