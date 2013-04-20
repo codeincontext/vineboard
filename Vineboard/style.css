@@ -378,10 +378,44 @@ video {
 }
 
 .black video {
-
 }
 
-#effect1 {
+h2 {
+	font: 16px/24px Helvetica,Arial,sans-serif;
+	color: rgb(177, 177, 177);
+	position: absolute;
+	bottom: 12px;
+	right: 130px;
+}
+
+#reverb.active, #overdrive.active, #convolution.active {
+	background: -webkit-linear-gradient(top, rgba(114, 114, 114, 1) 0%,rgba(213, 213, 213, 1) 100%);
+}
+
+#reverb, #overdrive, #convolution {
+	height: 30px;
+	width: 30px;
+	background-color: #aaa;
+	position: absolute;
+	bottom: 10px;
+	border-radius: 15px;
+	background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(155, 155, 155, 1) 100%);
+	box-shadow: 0px 0px 5px 0px #000;
+}
+
+#reverb {
+	right: 90px;
+
+}
+#overdrive {
+	right: 50px;
+
+}
+#convolution {
+	right: 10px;
+
+}
+/*#convolution {
 height: 30px;
 width: 30px;
 background-color: #aaa;
@@ -392,31 +426,7 @@ border-radius: 15px;
 background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(155, 155, 155, 1) 100%);
 box-shadow: 0px 0px 5px 0px #000;
 }
-
-#effect2 {
-height: 30px;
-width: 30px;
-background-color: #aaa;
-position: absolute;
-bottom: 10px;
-right: 50px;
-border-radius: 15px;
-background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(155, 155, 155, 1) 100%);
-box-shadow: 0px 0px 5px 0px #000;
-}
-
-#effect3 {
-height: 30px;
-width: 30px;
-background-color: #aaa;
-position: absolute;
-bottom: 10px;
-right: 90px;
-border-radius: 15px;
-background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(155, 155, 155, 1) 100%);
-box-shadow: 0px 0px 5px 0px #000;
-}
-
+*/
 #comma {
 	font: bold 36px/8px Helvetica,Arial,sans-serif;
 	padding: 0px 0px 9px 10px;
@@ -433,5 +443,27 @@ box-shadow: 0px 0px 5px 0px #000;
 	font: bold 26px/8px Helvetica,Arial,sans-serif;
 	padding: 11px 1px 9px 11px;
 	text-shadow: 0px 1px 0px #fff;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	border-top: 1px solid rgb(27, 27, 27);
+	width: 100%;
+	height: 30px;
+	left: 0;
+	text-align: center;
+	padding-top: 20px;
+	background-color: rgb(29, 29, 29);
+}
+
+#wmas {
+	font: bold 18px/18px "Bebas Neue",Arial,sans-serif;
+	color: #aaa;
+	text-decoration: none;
+}
+
+#wmas:hover {
+	color: #eee;
 }
 

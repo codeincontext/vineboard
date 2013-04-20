@@ -1,6 +1,4 @@
-// todo:
-// - use web audio
-// - use web audio effects
+// effects borrowed from https://github.com/dashersw/pedalboard.js/
 
 var keyMapping = {
   65: 'c',
@@ -29,28 +27,42 @@ var keys = {};
 
 var sustain = false;
 var sustainedNotes = [];
-var audioContext, preEffectNode, convNode, waveShaper;
+var audioContext, preEffectNode, convNode, waveShaper, reverbConv;
 var convolution = false;
 var overdrive = false;
+var reverb = false;
 
 function enableConvolution() {
-  preEffectNode.disconnect();
+  disableEffects(false);
   preEffectNode.connect(convNode);
+  convolution = true;
+  document.getElementById('convolution').classList.add('active');
 }
 
-function disableConvolution() {
+function disableEffects(reconnect) {
   preEffectNode.disconnect();
-  preEffectNode.connect(audioContext.destination);
+  if (reconnect) preEffectNode.connect(audioContext.destination);
+  convolution = false;
+  overdrive = false;
+  reverb = false;
+  document.getElementById('reverb').classList.remove('active');
+  document.getElementById('overdrive').classList.remove('active');
+  document.getElementById('convolution').classList.remove('active');
 }
 
 function enableOverdrive() {
-  preEffectNode.disconnect();
+  disableEffects(false);
   preEffectNode.connect(waveShaper);
+  overdrive = true;
+  document.getElementById('overdrive').classList.add('active');
 }
 
-function disableOverdrive() {
-  preEffectNode.disconnect();
-  preEffectNode.connect(audioContext.destination);
+function enableReverb() {
+  disableEffects(false);
+  preEffectNode.connect(reverbConv);
+  reverb = true;
+  document.getElementById('reverb').classList.add('active');
+
 }
 
 function setupAudio() {
@@ -58,13 +70,6 @@ function setupAudio() {
   audioContext = new webkitAudioContext;
   preEffectNode = audioContext.createGainNode();
   preEffectNode.connect(audioContext.destination);
-
-  // Convolution
-  convNode = audioContext.createConvolver();
-  var convGainNode = audioContext.createGainNode();
-  convNode.connect(convGainNode);
-  convGainNode.connect(audioContext.destination);
-  convGainNode.gain.value = 4.0;  // conv is quiet. boost it a bit
 
   // Overdrive
   var lowPassFreq = 7000;
@@ -84,6 +89,12 @@ function setupAudio() {
     }
     waveShaper.curve = wsCurve;
 
+  // Convolution
+  convNode = audioContext.createConvolver();
+  var convGainNode = audioContext.createGainNode();
+  convNode.connect(convGainNode);
+  convGainNode.connect(audioContext.destination);
+  convGainNode.gain.value = 4.0;  // conv is quiet. boost it a bit
 
   request = new XMLHttpRequest();
   request.open('GET', 'AK-SPKRS_VinUs_002.wav', true);
@@ -95,6 +106,21 @@ function setupAudio() {
       });
   };
   request.send();
+
+  // reverb
+  reverbConv = audioContext.createConvolver();
+  reverbConv.connect(audioContext.destination);
+  request2 = new XMLHttpRequest();
+
+  request2.open('GET', 'pcm90cleanplate.wav', true);
+  request2.responseType = 'arraybuffer';
+
+  request2.onload = function() {
+      audioContext.decodeAudioData(/** @type {ArrayBuffer} */(request2.response), function(buffer) {
+          reverbConv.buffer = buffer;
+      });
+  };
+  request2.send();
 }
 
 
@@ -151,21 +177,23 @@ var onkeydown = function(aEvent) {
         key.pause();
       });
     } else if (aEvent.keyCode == 188) {
-      if (convolution) {
-        disableConvolution();
+      if (reverb) {
+        disableEffects(true);
       } else {
-        enableConvolution();
+        enableReverb();
       }
-      convolution = !convolution;
     } else if (aEvent.keyCode == 190) {
       if (overdrive) {
-        disableOverdrive();
+        disableEffects(true);
       } else {
         enableOverdrive();
       }
-      overdrive = !overdrive;
     } else if (aEvent.keyCode == 191) {
-
+      if (convolution) {
+        disableEffects(true);
+      } else {
+        enableConvolution();
+      }
     } else {
       var key = keys[aEvent.keyCode];
       if (!key) return;
