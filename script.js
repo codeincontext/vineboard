@@ -164,10 +164,17 @@ function init() {
   }
   setupAudio();
 
+  t = setTimeout(function() {
+    for (var i = 0; i < loader.countToLoad; i++) {
+      loader.objectLoaded();
+    }
+  }, 5000);
 
   loader.onFinished = function(){
+    clearTimeout(t);
     for (var key in keyMapping) {
       if (keyMapping.hasOwnProperty(key)) {
+
         var videoElement = document.getElementById(keyMapping[key]);
         keys[key] = new Key(videoElement);
       }

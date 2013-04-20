@@ -5,7 +5,20 @@ var Key = (function() {
 
   function Key(element) {
     this.element = element;
+    var that = this;
     this.video = this.element.childNodes[2];
+    this.element.addEventListener("mousedown", function() {
+      that.play();
+    });
+    this.element.addEventListener("touchstart", function() {
+      that.play();
+    });
+    this.element.addEventListener("mouseup", function() {
+      that.pause();
+    })
+    this.element.addEventListener("touchend", function() {
+      that.pause();
+    })
 
     this.audioNode = audioContext.createMediaElementSource(this.video);
     this.gainNode = audioContext.createGainNode();
