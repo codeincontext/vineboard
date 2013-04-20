@@ -1,0 +1,238 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* >> The Magnificent CLEARFIX: Updated to prevent margin-collapsing on child elements << j.mp/bestclearfix */
+.clearfix:before, .clearfix:after {
+  content: "\0020"; display: block; height: 0; visibility: hidden;	
+} 
+
+.clearfix:after { clear: both; }
+/* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
+.clearfix { zoom: 1; }
+
+body {
+	background-color: rgb(46, 46, 46);
+	padding:10px; 
+}
+
+video {
+	width: 72px;
+	height: 128px;
+	margin: 0 -2px 10px 0;
+	border-radius: 0px 0px 20px 20px;
+	background-color: rgb(224, 224, 224);
+	border: 1px solid rgb(236, 236, 236);
+	box-shadow: 0px 10px 0px 0px rgb(182, 182, 182);
+	opacity: 0.7;
+}
+
+video .blackkeys {
+
+}
+
+#wrapper {
+	margin: 0 auto;
+	width: 949px;
+	height: 283px;
+	background-color: #000;
+	border-radius: 10px;
+	border: 10px solid #000;
+	top: 68px;
+	position: relative;
+}
+
+#intro {
+	width: 100%;
+	float: left;
+	text-align: center;
+}
+
+#intro h1 {
+	font: bold 44px/75px "museo-slab-1","museo-slab-2","Helvetica Neue",Helvetica,Arial,sans-serif;
+	color: #333;
+}
+
+#intro p {
+	font: 16px/24px Helvetica,Arial,sans-serif;
+	margin-bottom: 28px;
+	color: #999;
+}
+
+.white {
+	width: 100%;
+	top: 230px;
+	position: fixed;
+}
+
+.black {
+	width: 986px;
+	top: 89px;
+	position: fixed;
+	height: 141px;
+}
+
+#c {
+	left: 0px;
+	position: absolute;
+}
+
+#d {
+	left: 76px;
+	position: absolute;
+}
+
+#e {
+	left: 152px;
+	position: absolute;
+}
+
+#f {
+	left: 228px;
+	position: absolute;
+}
+
+#g {
+	left: 304px;
+	position: absolute;
+}
+
+#a {
+	left: 380px;
+	position: absolute;
+}
+
+#b {
+	left: 456px;
+	position: absolute;
+}
+
+#c2 {
+	left: 532px;
+	position: absolute;
+}
+
+#d2 {
+	left: 608px;
+	position: absolute;
+}
+
+#e2 {
+	left: 684px;
+	position: absolute;
+}
+
+#f2 {
+	left: 760px;
+	position: absolute;
+}
+
+#g2 {
+	left: 836px;
+	position: absolute;
+}
+
+#a2 {
+	left: 912px;
+	position: absolute;
+}
+
+#csharp {
+	left: 39px;
+	position: absolute;
+}
+
+#dsharp {
+	left: 116px;
+	position: absolute;
+}
+
+#fsharp {
+	left: 267px;
+	position: absolute;
+}
+
+#gsharp {
+	left: 343px;
+	position: absolute;
+}
+
+#asharp {
+	left: 419px;
+	position: absolute;
+}
+
+#c2sharp {
+	left: 569px;
+	position: absolute;
+}
+
+#d2sharp {
+	left: 645px;
+	position: absolute;
+}
+
+#f2sharp {
+	left: 798px;
+	position: absolute;
+}
+
+#g2sharp {
+	left: 874px;
+	position: absolute;
+}
+
+#a2sharp {
+	left: 950px;
+	position: absolute;
+}
+
+.active video {
+	/*background-color: #000;*/
+	opacity: 1;
+}
