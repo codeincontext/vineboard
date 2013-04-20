@@ -29,6 +29,7 @@ var Key = (function() {
 
   Key.prototype.play = function() {
     this.element.classList.add('active');
+    this.video.currentTime = 0;
     this.video.play();
   }
 
