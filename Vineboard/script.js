@@ -1,4 +1,8 @@
-var keys = {
+// todo:
+// - use web audio
+// - use web audio effects
+
+var keyMapping = {
   65: 'c',
   87: 'csharp',
   83: 'd',
@@ -21,12 +25,26 @@ var keys = {
   220: 'g2'
 };
 
+var keys = {};
+
 var sustain = false;
 var sustainedNotes = [];
 
-// var audioContext = new webkitAudioContext;
+var audioContext = new webkitAudioContext;
 
-// var audioElement = document.querySelector('audio');
+
+function init() {
+  for (var key in keyMapping) {
+    if (keyMapping.hasOwnProperty(key)) {
+      var videoElement = document.getElementById(keyMapping[key]);
+      keys[key] = new Key(videoElement);
+    }
+  }
+}
+window.onload = init;
+
+// var gainNode = 
+// var videoElement = document.querySelector('video');
 // var mediaSourceNode = context.createMediaElementSource(audioElement);
 // mediaSourceNode.connect(filter);
 // filter.connect(context.destination);
@@ -34,11 +52,12 @@ var sustainedNotes = [];
 // var mediaElement = document.getElementById('mediaElementID');
 // var sourceNode = context.createMediaElementSource(mediaElement);
 // sourceNode.connect(audioContext.destination);
- 
+
+
 // this.gainNode.connect(audioContext.destination);
 
 var onkeydown = function(aEvent) {
-    console.log(aEvent.keyCode);
+    // console.log(aEvent.keyCode);
 
     // Don't intercept keyboard shortcuts
     if (aEvent.altKey
@@ -53,13 +72,9 @@ var onkeydown = function(aEvent) {
     } else {
 
       var key = keys[aEvent.keyCode];
-      var robVid = document.getElementById(key);
+      if (!key) return;
 
-      if (robVid) {
-        robVid.classList.add('active');
-        robVid.childNodes[1].play();
-      }
-
+      key.play();
     }
 
   }
@@ -77,23 +92,19 @@ var onkeydown = function(aEvent) {
     if (aEvent.keyCode == 32) {
       sustain = false;
       // pause any vines that aren't currently being pressed
-      sustainedNotes.forEach(function(note, i) {
-        note.classList.remove('active');
-        note.childNodes[1].pause();
+      sustainedNotes.forEach(function(key, i) {
+        key.pause();
       });
     } else {
-
       var key = keys[aEvent.keyCode];
-      var robVid = document.getElementById(key);
+      if (!key) return;
 
-      if (robVid) {
-        if (sustain) {
-          sustainedNotes.push(robVid);
-        } else {
-          robVid.classList.remove('active');
-          robVid.childNodes[1].pause();
-        }
-      } 
+
+      if (sustain) {
+        sustainedNotes.push(key);
+      } else {
+        key.pause();
+      }
     }
   }
 
